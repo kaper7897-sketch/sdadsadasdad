@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аптека Здоровье | Официальный сайт</title>
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- ШАПКА САЙТА -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">Аптека <span>Здоровье</span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Главная</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <i class="fas fa-search" id="search-icon"></i>
+                <div class="cart-icon-container">
+                    <i class="fas fa-shopping-cart" id="cart-icon"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </div>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+        <!-- 1. ГЛАВНАЯ СТРАНИЦА -->
+        <section id="home" class="page active-page">
+            <div class="container">
+                <h1 class="page-title">Добро пожаловать в аптеку "Здоровье"</h1>
+                
+                <!-- Поиск -->
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск лекарств, витаминов..." class="search-input" id="home-search">
+                </div>
+
+                <!-- Баннер акции -->
+                <div class="banner">
+                    <div class="banner-content">
+                        <h2>Скидка 20% на витамины</h2>
+                        <p>Поддержи иммунитет весной</p>
+                        <button class="btn btn-primary">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Категории на главной -->
+                <h2 class="section-title">Категории</h2>
+                <div class="categories-grid" id="home-categories">
+                    <div class="category-card" data-category="Лекарства">
+                        <i class="fas fa-capsules"></i>
+                        <span>Лекарства</span>
+                        <span class="category-count" id="count-lekarstva">0</span>
+                    </div>
+                    <div class="category-card" data-category="Витамины">
+                        <i class="fas fa-leaf"></i>
+                        <span>Витамины</span>
+                        <span class="category-count" id="count-vitaminy">0</span>
+                    </div>
+                    <div class="category-card" data-category="Гигиена">
+                        <i class="fas fa-soap"></i>
+                        <span>Гигиена</span>
+                        <span class="category-count" id="count-gigiena">0</span>
+                    </div>
+                    <div class="category-card" data-category="Мама и малыш">
+                        <i class="fas fa-baby"></i>
+                        <span>Мама и малыш</span>
+                        <span class="category-count" id="count-mama">0</span>
+                    </div>
+                    <div class="category-card" data-category="Сердце и сосуды">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Сердце и сосуды</span>
+                        <span class="category-count" id="count-heart">0</span>
+                    </div>
+                    <div class="category-card" data-category="Аллергия">
+                        <i class="fas fa-allergies"></i>
+                        <span>Аллергия</span>
+                        <span class="category-count" id="count-allergy">0</span>
+                    </div>
+                </div>
+
+                <!-- Популярные товары -->
+                <h2 class="section-title">Популярные товары</h2>
+                <div class="products-grid" id="home-products">
+                    <!-- Товары будут загружены через JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. КАТАЛОГ -->
+        <section id="catalog" class="page">
+            <div class="container">
+                <h1 class="page-title">Каталог товаров</h1>
+                
+                <!-- Поиск в каталоге -->
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск в каталоге..." class="search-input" id="catalog-search">
+                </div>
+                
+                <!-- Фильтры в каталоге (такие же как категории на главной) -->
+                <h2 class="section-title">Категории</h2>
+                <div class="categories-grid" id="catalog-filters">
+                    <div class="category-card filter-chip active" data-filter="all">
+                        <i class="fas fa-th-large"></i>
+                        <span>Все товары</span>
+                        <span class="category-count" id="count-all">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Лекарства">
+                        <i class="fas fa-capsules"></i>
+                        <span>Лекарства</span>
+                        <span class="category-count" id="count-cat-lekarstva">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Витамины">
+                        <i class="fas fa-leaf"></i>
+                        <span>Витамины</span>
+                        <span class="category-count" id="count-cat-vitaminy">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Гигиена">
+                        <i class="fas fa-soap"></i>
+                        <span>Гигиена</span>
+                        <span class="category-count" id="count-cat-gigiena">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Мама и малыш">
+                        <i class="fas fa-baby"></i>
+                        <span>Мама и малыш</span>
+                        <span class="category-count" id="count-cat-mama">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Сердце и сосуды">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Сердце и сосуды</span>
+                        <span class="category-count" id="count-cat-heart">0</span>
+                    </div>
+                    <div class="category-card filter-chip" data-filter="Аллергия">
+                        <i class="fas fa-allergies"></i>
+                        <span>Аллергия</span>
+                        <span class="category-count" id="count-cat-allergy">0</span>
+                    </div>
+                </div>
+
+                <!-- Сетка товаров -->
+                <div class="products-grid" id="catalog-products">
+                    <!-- Товары будут загружены через JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Аптека Здоровье</h4>
+                    <p>Забота о вашем здоровье — наша главная миссия. Более 10 лет мы помогаем людям быть здоровыми.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="#">Часто задаваемые вопросы</a></li>
+                        <li><a href="#">Как сделать заказ</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> 8 (800) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@apteka-zdorovie.ru</li>
+                        <li><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Здоровья, д. 15</li>
+                        <li><i class="fas fa-clock"></i> Ежедневно: 8:00 - 22:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 Аптека "Здоровье". Все права защищены.</p>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-mir"></i>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close-modal" id="close-cart">&times;</span>
+            <h2 class="auth-title">Корзина</h2>
+            <div id="cart-items" class="cart-items">
+                <!-- Товары в корзине будут отображаться здесь -->
+            </div>
+            <div class="cart-total" id="cart-total">
+                Итого: 0 ₽
+            </div>
+            <button class="btn btn-primary btn-full" id="checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ВХОДА/РЕГИСТРАЦИИ -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-auth">&times;</span>
+            
+            <!-- Форма входа -->
+            <div id="login-form-container">
+                <h2 class="auth-title">Вход</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Телефон или Email</label>
+                        <input type="text" id="login-email" placeholder="+7 (999) 123-45-67 или email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" placeholder="Введите пароль" required>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" checked> Запомнить меня
+                        </label>
+                        <a href="#" class="forgot-link">Забыли пароль?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Войти</button>
+                </form>
+                <p class="auth-redirect">
+                    Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a>
+                </p>
+            </div>
+            
+            <!-- Форма регистрации -->
+            <div id="register-form-container" style="display: none;">
+                <h2 class="auth-title">Регистрация</h2>
+                <form id="register-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reg-name">Имя *</label>
+                            <input type="text" id="reg-name" placeholder="Введите имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-surname">Фамилия</label>
+                            <input type="text" id="reg-surname" placeholder="Введите фамилию">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-phone">Номер телефона *</label>
+                        <input type="tel" id="reg-phone" placeholder="+7 (999) 888-77-66" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-email">Email *</label>
+                        <input type="email" id="reg-email" placeholder="example@mail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-password">Пароль *</label>
+                        <input type="password" id="reg-password" placeholder="Минимум 8 символов" required minlength="8">
+                        <div class="password-strength" id="password-strength"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Подтверждение пароля *</label>
+                        <input type="password" id="reg-confirm-password" placeholder="Повторите пароль" required>
+                        <div class="password-match" id="password-match"></div>
+                    </div>
+                    
+                    <label class="checkbox">
+                        <input type="checkbox" id="agree-terms" checked> Согласен с <a href="#" class="link">условиями обработки данных</a>
+                    </label>
+                    
+                    <button type="submit" class="btn btn-primary btn-full" id="register-btn">Зарегистрироваться</button>
+                </form>
+                <p class="auth-redirect">
+                    Уже есть аккаунт? <a href="#" id="show-login">Войти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
